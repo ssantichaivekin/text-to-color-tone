@@ -10,7 +10,17 @@ Ideas: Christie Chan's MS project
 
 from get_image_links import get_image_links
 from download_images import download_images
+from knn_process import get_pixel_list
 
 def get_color_tone(text) :
     links = get_image_links(text)
-    img_names = download_images(links)
+    img_paths = download_images(links)
+    pixel_list = get_pixel_list(img_paths)
+    print(pixel_list)
+    print(pixel_list.shape)
+
+
+
+if __name__ == '__main__' :
+    get_color_tone('Snack')
+    

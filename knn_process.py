@@ -9,6 +9,11 @@ from numpy import concatenate
 from sklearn.cluster import KMeans
 import cv2
 
+def get_image(img_path) :
+    tempimage = cv2.imread(img_path, cv2.IMREAD_COLOR)
+    image = cv2.cvtColor(tempimage, cv2.COLOR_BGR2RGB)
+    return image
+
 def get_pixel_list(img_paths) :
     '''
     Read the images in image path and return one flatten list
@@ -17,8 +22,7 @@ def get_pixel_list(img_paths) :
     pixel_lists = []
     for img_path in img_paths :
         # Process the image using opencv's cv2 library
-        image = cv2.imread(img_path, cv2.IMREAD_COLOR)
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        image = get_image(img_path)
         # The image is now in np.ndarray form.
         # We then reshape it so that it is a flat list of
         # pixels.

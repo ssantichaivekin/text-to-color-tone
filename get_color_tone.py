@@ -18,21 +18,24 @@ import matplotlib.pyplot as plt
 
 
 def get_color_tone(text) :
-    # Download images from text :
+    # Download images from text and get the image paths
+    # img_paths are where the images are stored on the client.
     links = get_image_links(text)
     img_paths = download_images(links)
 
-    # Process the images using Scikit's KNN :
+    # Read and process the images using Scikit's KNN.
     pixel_list = get_pixel_list(img_paths)
+    # Get the KNN clusters. We are finding 6 clusters in the example.
     clusters = get_clusters(pixel_list, 6)
 
     # Plotting :
-    bar = get_bar(clusters)
+    color_tone_bar = get_bar(clusters)
+    # Set the plot name
     plt.suptitle('Color tone of: %s' % text, fontsize = 16)
 
-    # Color tone
+    # Plot color tone
     bottom_ax = plt.subplot(212)
-    bottom_ax.imshow(bar)
+    bottom_ax.imshow(color_tone_bar)
 
     # Example Picture 1
     ex_img0 = read_image(img_paths[0])
@@ -50,10 +53,8 @@ def get_color_tone(text) :
     plt.show()
 
 
-
-
 if __name__ == '__main__' :
-    # Try to get the color tone of the word "Snack"
+    # Try to get the color tone of the word "Snack" and "Groot"
     get_color_tone('Snack')
     get_color_tone('Groot')
     

@@ -20,6 +20,7 @@ def download_images(image_links, file_prefix='temp') :
     return imgnames
 
 if __name__ == '__main__' :
+    # Driver function: Try to download 6 images for Groot.
     from get_image_links import get_image_links
     links = get_image_links('Groot')
     img_names = download_images(links)

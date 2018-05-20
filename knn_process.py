@@ -34,7 +34,7 @@ def get_clusters(pixel_list, num_clusters=5) :
     Get the KNN clusters from the pixel list.
     '''
     clusters = KMeans(n_clusters=num_clusters)
-    clusters.fit(image_pixels)
+    clusters.fit(pixel_list)
     return clusters
 
 def console_display_clusters(clusters) :

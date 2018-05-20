@@ -10,13 +10,12 @@ link: https://www.pyimagesearch.com/2014/05/26/opencv-python-k-means-color-clust
 
 import numpy as np
 import cv2
+import matplotlib.pyplot as plt
 
 def centroid_histogram(clt):
 	# grab the number of different clusters and create a histogram
 	# based on the number of pixels assigned to each cluster
 	numLabels = np.arange(0, len(np.unique(clt.labels_)) + 1)
-	print('>>>', numLabels)
-	print(len(clt.labels_))
 	(hist, _) = np.histogram(clt.labels_, bins = numLabels)
 
 	# normalize the histogram, such that it sums to one
@@ -48,10 +47,10 @@ def plot_colors(hist, centroids):
 The following part is written by me, adpated from the tutorial.
 '''
 
-def plot_clusters(clusters) :
+def get_bar(clusters) :
 	'''
 	Use matplotlib to plot the scikit-knn clusters.
 	'''
 	hist = centroid_histogram(clusters)
 	bar = plot_colors(hist, clusters.cluster_centers_)
-	plt.imshow(bar)
+	return bar

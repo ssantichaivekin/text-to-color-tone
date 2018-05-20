@@ -6,6 +6,7 @@ KNN (K-nearest-neighbors) algorithm the find the colors
 '''
 
 from numpy import concatenate
+from sklearn.cluster import KMeans
 import cv2
 
 def get_pixel_list(img_paths) :
@@ -27,4 +28,23 @@ def get_pixel_list(img_paths) :
     # lists into one list.
     pixel_list = concatenate(pixel_lists)
     return pixel_list
+
+def get_clusters(pixel_list, num_clusters=5) :
+    '''
+    Get the KNN clusters from the pixel list.
+    '''
+    clusters = KMeans(n_clusters=num_clusters)
+    clusters.fit(image_pixels)
+    return clusters
+
+def console_display_clusters(clusters) :
+    '''
+    Display the float/int values of the clusters.
+    '''
+    centers = clusters.cluster_centers_
+    for i, center in zip(range(len(center)), center) :
+        print("Center #",i, " == ", center)
+        # note that the center's values are floats, not ints!
+        center_integers = [int(p) for p in center]
+        print("   and as ints:", center_integers)
     

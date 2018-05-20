@@ -6,8 +6,8 @@ This is a python example that displays the color tone of a text. The process of 
 4. Display the colors (called collectively as color tone) using matplotlib.
 
 Here are some example usage of the app.
-[[screenshot1]]
-[[screenshot2]]
+[[screenshot1.png]]
+[[screenshot2.png]]
 
 Python Library Dependencies: scikit, matplotlib, opencv(cv2), requests
 

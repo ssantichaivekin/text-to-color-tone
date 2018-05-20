@@ -53,3 +53,9 @@ def get_image_links(query, image_num=6) :
         # print(thumbnail_link)
         thumbnail_links += [thumbnail_link]
     return thumbnail_links
+
+if __name__ == '__main__' :
+    print('Dogs:')
+    print(*get_image_links('Dogs'), sep='\n')
+    print('Independence Day:')
+    print(*get_image_links('Independence Day'), sep='\n')

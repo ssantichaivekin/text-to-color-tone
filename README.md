@@ -7,8 +7,8 @@ This is a python example that displays the color tone of a text. The process of 
 
 Here are some example usage of the app.
 
-![screenshot1](screenshot1.png){:width="200px"}
-![screenshot2](screenshot2.png){:width="200px"}
+<img src="screenshot1.png" width="350"/>
+<img src="screenshot2.png" width="350"/>
 
 Python Library Dependencies: scikit, matplotlib, opencv(cv2), requests
 

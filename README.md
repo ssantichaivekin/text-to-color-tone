@@ -5,9 +5,9 @@ This is a python example that displays the color tone of a text. The process of 
 3. Use KNN (K nearest neighbors) algorithm on the thumnails to get colors (3 by default) that best represent the pixel concatenation.
 4. Display the colors (called collectively as color tone) using matplotlib.
 
-Here are some example usage of the app.
+Here are some example usage snapshot of the app.
 
-<img src="screenshot1.png" width="350"/> <img src="screenshot2.png" width="350"/>
+<img src="screenshot1.png" width="400"/> <img src="screenshot2.png" width="400"/>
 
 Python Library Dependencies: scikit, matplotlib, opencv(cv2), requests
 

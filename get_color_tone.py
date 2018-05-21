@@ -25,8 +25,8 @@ def get_color_tone(text) :
 
     # Read and process the images using Scikit's KNN.
     pixel_list = get_pixel_list(img_paths)
-    # Get the KNN clusters. We are finding 6 clusters in the example.
-    clusters = get_clusters(pixel_list, 6)
+    # Get the KNN clusters. We are finding 5 clusters in the example.
+    clusters = get_clusters(pixel_list, 5)
 
     # Plotting :
     color_tone_bar = get_bar(clusters)

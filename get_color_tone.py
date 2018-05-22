@@ -4,16 +4,28 @@ The program uses the Google API to get thumbnails
 and obtain from the thumbnails color tone using
 scikit's KNN algorithm.
 
+The program also support command line arguments
+using the argparse library.
+
 Author: Santi Santichaivekin
 Ideas: Christie Chan's MS project
 '''
 
+# The import statement is essentially the index of this app.
+
+# Use Google API to find the image links
 from get_image_links import get_image_links
+# Use request to download images
 from download_images import download_images
+# Use opencv(cv2) to read images into np.ndarray image format
 from knn_process import read_image
+# Use opencv(cv2) to read images into np.ndarray single list format
 from knn_process import get_pixel_list
+# From the single list format, use Scikit's KNN to compute clusters
 from knn_process import get_clusters
+# From clusters, create a bar, which can be then converted to a plot
 from plot_utils import get_bar
+
 import matplotlib.pyplot as plt
 
 
@@ -25,7 +37,7 @@ def get_color_tone(text) :
 
     # Read and process the images using Scikit's KNN.
     pixel_list = get_pixel_list(img_paths)
-    # Get the KNN clusters. We are finding 5 clusters in the example.
+    # Get the KNN clusters. We are finding  clusters in the example.
     clusters = get_clusters(pixel_list, 5)
 
     # Plotting :
@@ -54,7 +66,11 @@ def get_color_tone(text) :
 
 
 if __name__ == '__main__' :
-    # Try to get the color tone of the word "Snack" and "Groot"
-    get_color_tone('Snack')
-    get_color_tone('Groot')
+    # Here defines the command-line options for the program
+    import argparse
+    parser = argparse.ArgumentParser(description='Obtain color tone image from text.')
+    parser.add_argument('text', type=str, help='Text we use to find the color tone')
+    text = vars(parser.parse_args())['text']
+    get_color_tone(text)
+
     

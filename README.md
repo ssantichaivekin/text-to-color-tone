@@ -5,7 +5,7 @@ This is a python example that displays the color tone of a text. The process of 
 3. Use KNN (K nearest neighbors) algorithm on the thumnails to get colors (5 by default) that best represent the pixel concatenation.
 4. Display the colors (called collectively as color tone) using matplotlib.
 
-The app also supports command line arguments using the function argparse. Here is an example of how you run the commands.
+The app also supports command line arguments using the function argparse. Here is an example of how you run the commands:
 
 ```bash
 python3 get_color_tone.py 'Groot'

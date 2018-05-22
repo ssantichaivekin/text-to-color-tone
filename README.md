@@ -22,4 +22,4 @@ Python Library Dependencies: scikit, matplotlib, opencv(cv2), requests
 
 Built @ May 2018
 
-Note that you will need your own google API key to be able to run the app. The app by default tries to read it from google-api-key.txt) 
+Note that you will need your own google API key to be able to run the app. The app by default tries to read it from google-api-key.txt -- If you want to try this on your own machine, make you you get a Google Custom Search API key.

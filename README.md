@@ -20,6 +20,8 @@ The index of the app is in get_color_tone.py -- you should start from there if y
 
 Python Library Dependencies: scikit, matplotlib, opencv(cv2), requests
 
+This project is now moving to process more words -- we are now going to process the whole dictionary! We hope we find an interesting correlation between word structures and their color tone!
+
 Built @ May 2018
 
 Note that you will need your own google API key to be able to run the app. The app by default tries to read it from google-api-key.txt -- If you want to try this on your own machine, make you you get a Google Custom Search API key.

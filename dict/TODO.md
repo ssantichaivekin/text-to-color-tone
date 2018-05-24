@@ -6,3 +6,5 @@ We use NLTK library dictionary to seperate the dictionary into word groups. We w
 3. starts_with_vowel # check whether if a word starts with vowel or a consonant
 4. get_consonant_sound(syllable_index) # get the sleading consonant sound of that index
 5. get_vowel_sound(syllable_index) # get the vowel sound of that index
+
+Note that we should write test cases also.

@@ -4,7 +4,7 @@
 # Note that these functions will require the NLTK
 # dictionary.
 
-import NLTK
+import nltk
 
 def get_num_syllable(word) :
     '''
@@ -46,7 +46,7 @@ def get_first_character(word) :
     '''
     Get the first character of a word.
     '''
-    return word[0]
+    return word[0].lower()
 
 def starts_with_consonant(word) :
     '''
@@ -97,3 +97,7 @@ def get_vowel_sound(word, syllable_index) :
     '''
     # TODO: write code here
     return 
+
+# Test cases:
+if __name__ == '__main__' :
+    assert get_first_character('Game') == 'g'

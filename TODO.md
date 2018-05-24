@@ -3,6 +3,7 @@ Todo:
 We want to find the correlation between characters/phonemes and their respective color tone. In order to do this we will need to use a dictionary to seperate words into different groups (accorsing to their characters or phonemes) and run the KNN on different groups and compare them against each other. How will we achieve that?
 
 Part 1:
+We should get this inside the dict folder
 We use NLTK library dictionary to seperate the dictionary into word groups. We want to implement these functions:
 1. get_num_syllable # get the number of syllables of the word
 2. get_type # return 'noun', 'verb', 'adjective', 'adverb', ...
@@ -10,6 +11,8 @@ We use NLTK library dictionary to seperate the dictionary into word groups. We w
 3. starts_with_vowel # check whether if a word starts with vowel or a consonant
 4. get_consonant_sound(syllable_index) # get the sleading consonant sound of that index
 5. get_vowel_sound(syllable_index) # get the vowel sound of that index
+
+We will write these functions in the dict folder.
 
 We then seperate words to different groups. Here are some groups I am interested:
 : Meaning and Functions (5 groups total)

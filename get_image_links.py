@@ -41,7 +41,7 @@ def get_image_links(query, image_num=6) :
         # Search type -- we are searching images
         'searchType': 'image',
         # 6 seems to be enough for finding color tone.
-        'num'       : 6,
+        'num'       : image_num,
         # This is my Google API key.
         'key'       : key
         }

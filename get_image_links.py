@@ -48,6 +48,11 @@ def get_image_links(query, image_num=6) :
     link = 'https://www.googleapis.com/customsearch/v1'
     r = requests.get(link, params)
     thumbnail_links = []
+    if 'items' not in r.json().keys() :
+        print('There is an error with your search request.')
+        print('This is mot likely caused by your Google search API key.')
+        print('Please add or change your key in google-api-key.txt')
+        return []
     for search_item in r.json()['items'] :
         thumbnail_link = search_item['image']['thumbnailLink']
         # print(thumbnail_link)

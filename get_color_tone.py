@@ -74,6 +74,7 @@ if __name__ == '__main__' :
         os.mkdir('./assets')
     except :
         pass
+    # add a parser to parse text argument
     parser = argparse.ArgumentParser(description='Obtain color tone image from text.')
     parser.add_argument('text', type=str, help='Text we use to find the color tone')
     text = vars(parser.parse_args())['text']

@@ -1,6 +1,6 @@
 Todo:
 
-We want to find the correlation between characters/phonemes and their respective color tone. In order to do this we will need to use a dictionary to seperate words into different groups (accorsing to their characters or phonemes) and run the KNN on different groups and compare them against each other. How will we achieve that?
+We want to find the correlation between characters/phonemes and their respective color tone. In order to do this we will need to use a dictionary to seperate words into different groups (according to their characters or phonemes) and run the KNN on different groups and compare them against each other. How will we achieve that?
 
 Part 1:
 We should get this inside the dict folder

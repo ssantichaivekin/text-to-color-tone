@@ -11,7 +11,10 @@ def get_num_syllable(word) :
     Return the number of syllable a word (string) has.
     '''
     # TODO: write code here
-    # When finished writing, remove TODO tag.
+    # When finished writing, remove TODO tag.   
+    tokens = nltk.word_tokenize(word)
+    countword = len(tokens)
+    print(tokens)
     return countword
 
 def get_type(word) :
@@ -52,7 +55,9 @@ def starts_with_consonant(word) :
     '''
     Return whether the string word starts with a consonant or not.
     '''
-    # TODO: write code here
+    vowels = ["a", "e", "i", "o", "u"]
+    if(get_first_character(word) in vowels) :
+        return False
     return True
 
 def starts_with_vowel(word) :
@@ -100,4 +105,7 @@ def get_vowel_sound(word, syllable_index) :
 
 # Test cases:
 if __name__ == '__main__' :
+    assert get_num_syllable("Hello World!") == 2
     assert get_first_character('Game') == 'g'
+    assert starts_with_consonant('Hello') == True 
+    assert starts_with_consonant('University') == False

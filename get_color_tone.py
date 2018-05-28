@@ -68,6 +68,12 @@ def get_color_tone(text) :
 if __name__ == '__main__' :
     # Here defines the command-line options for the program
     import argparse
+    import os
+    # add the assets folder :
+    try :
+        os.mkdir('./assets')
+    except :
+        pass
     parser = argparse.ArgumentParser(description='Obtain color tone image from text.')
     parser.add_argument('text', type=str, help='Text we use to find the color tone')
     text = vars(parser.parse_args())['text']

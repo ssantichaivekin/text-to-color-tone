@@ -11,14 +11,14 @@ def read_key(keyfilename='google-api-key.txt') :
     '''
     Read the Google API key from keyfilename.
     '''
-    key = open(keyfilename).read()
+    key = open(keyfilename).read().strip()
     return key
 
 def read_search_engine_id(keyfilename='google-engine-name.txt') :
     '''
     Read the custom search engine.
     '''
-    key = open(keyfilename).read()
+    key = open(keyfilename).read().strip()
     return key
 
 def get_image_links(query, image_num=6) :

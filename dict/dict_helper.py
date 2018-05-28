@@ -5,18 +5,22 @@
 # dictionary.
 
 import nltk
+from nltk.corpus import cmudict
+
+d = cmudict.dict()
 
 def get_num_syllable(word) :
     '''
     Return the number of syllable a word (string) has.
+    Return -1 if the word is not in the dictionary.
+    This only returns the first phoneme of the word in cmudict
     '''
-    # TODO: write code here
-    # When finished writing, remove TODO tag.   
-    tokens = nltk.word_tokenize(word)
-    countword = len(tokens)
-    print(tokens)
-    return countword
-
+    try :
+        phoneme_list = [len(list(y for y in x if y[-1].isdigit())) for x in d[word.lower()]]
+        countword = phoneme_list[0]
+        return countword
+    except KeyError :
+        return -1
 def get_type(word) :
     '''
     Return the type of the word (noun, verb, adjective, etc)
@@ -105,7 +109,7 @@ def get_vowel_sound(word, syllable_index) :
 
 # Test cases:
 if __name__ == '__main__' :
-    assert get_num_syllable("Hello World!") == 2
+    assert get_num_syllable("Acceleration") == 5
     assert get_first_character('Game') == 'g'
     assert starts_with_consonant('Hello') == True 
     assert starts_with_consonant('University') == False

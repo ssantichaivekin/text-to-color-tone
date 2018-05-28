@@ -48,18 +48,18 @@ def get_first_character(word) :
     '''
     return word[0].lower()
 
-def starts_with_consonant(word) :
-    '''
-    Return whether the string word starts with a consonant or not.
-    '''
-    # TODO: write code here
-    return True
-
 def starts_with_vowel(word) :
     '''
     Return whether the string word starts with a vowel or not.
     '''
-    return not starts_with_consonant(word)
+    # TODO: write code here
+    return True
+
+def starts_with_consonant(word) :
+    '''
+    Return whether the string word starts with a consonant or not.
+    '''
+    return not starts_with_vowel(word)
 
 def all_consonant_sound() :
     '''

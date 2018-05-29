@@ -78,16 +78,17 @@ def all_consonant_sound() :
     '''
     Return  a list of all possible starting consonant sound.
     '''
-    # TODO: write code here
-    return []
+    cons_list = ['B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
+    , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
+    return cons_list
 
 def all_vowel_sound() :
     '''
     Return  a list of all possible starting vowel sound.
     '''
-    # TODO: write code here
-    return []
-
+    vow_list = ['AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
+    , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW'] 
+    return vow_list
 
 def get_consonant_sound(word, syllable_index) :
     '''
@@ -113,6 +114,10 @@ def get_vowel_sound(word, syllable_index) :
 
 # Test cases:
 if __name__ == '__main__' :
+    assert all_consonant_sound() == ['B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
+    , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
+    assert all_vowel_sound() == ['AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
+    , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW']
     assert get_num_syllable("Acceleration") == 5
     assert get_first_character('Game') == 'g'
     assert starts_with_consonant('Hello') == True 

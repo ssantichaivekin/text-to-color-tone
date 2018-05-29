@@ -13,18 +13,17 @@ p_dict = cmudict.dict()
 def get_num_syllable(word) :
     '''
     Return the number of syllable a word (string) has.
-    Return -1 if the word is not in the dictionary.
-    This only returns the first phoneme of the word in cmudict
+    Throw KeyError exception if the word is not in the dictionary.
+    This only returns the first phoneme of the word in cmudict.
     '''
-    if word.lower() in p_dict :
-        # save the number vowel phone in each phoneme of the word
-        # vowel phone will have an in integer at the end
-        syl_list = [len(list(y for y in x if y[-1].isdigit())) for x in p_dict[word.lower()]]
-        # get the number of syllable of the first phoneme of the word
-        count_syl= syl_list[0]
-        return count_syl
-    else : 
-        return -1
+
+    # save the number vowel phone in each phoneme of the word
+    # vowel phone will have an in integer at the end
+    syl_list = [len(list(y for y in x if y[-1].isdigit())) for x in p_dict[word.lower()]]
+    # get the number of syllable of the first phoneme of the word
+    count_syl= syl_list[0]
+    return count_syl
+
 def get_type(word) :
     '''
     Return the type of the word (noun, verb, adjective, etc)

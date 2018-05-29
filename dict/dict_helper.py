@@ -7,7 +7,8 @@
 import nltk
 from nltk.corpus import cmudict
 
-d = cmudict.dict()
+# get CMU pronouncing dictionary
+p_dict = cmudict.dict()
 
 def get_num_syllable(word) :
     '''
@@ -15,11 +16,14 @@ def get_num_syllable(word) :
     Return -1 if the word is not in the dictionary.
     This only returns the first phoneme of the word in cmudict
     '''
-    try :
-        phoneme_list = [len(list(y for y in x if y[-1].isdigit())) for x in d[word.lower()]]
-        countword = phoneme_list[0]
-        return countword
-    except KeyError :
+    if word.lower() in p_dict :
+        # save the number vowel phone in each phoneme of the word
+        # vowel phone will have an in integer at the end
+        syl_list = [len(list(y for y in x if y[-1].isdigit())) for x in p_dict[word.lower()]]
+        # get the number of syllable of the first phoneme of the word
+        count_syl= syl_list[0]
+        return count_syl
+    else : 
         return -1
 def get_type(word) :
     '''

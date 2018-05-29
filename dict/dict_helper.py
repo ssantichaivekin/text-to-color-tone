@@ -13,18 +13,19 @@ p_dict = cmudict.dict()
 def get_num_syllable(word) :
     '''
     Return the number of syllable a word (string) has.
-    Return -1 if the word is not in the dictionary.
-    This only returns the first phoneme of the word in cmudict
+    Return -1 if the word is not in the CMU prounouncing dictionary.
+    This only returns the first pronunciation of the word in cmudict
     '''
     if word.lower() in p_dict :
-        # save the number vowel phone in each phoneme of the word
-        # vowel phone will have an in integer at the end
+        # save the number vowel sound in each pronunciation of the word
+        # vowel sound will have an in integer at the end
         syl_list = [len(list(y for y in x if y[-1].isdigit())) for x in p_dict[word.lower()]]
-        # get the number of syllable of the first phoneme of the word
+        # get the number of syllable of the first pronunciation of the word
         count_syl= syl_list[0]
         return count_syl
     else : 
         return -1
+
 def get_type(word) :
     '''
     Return the type of the word (noun, verb, adjective, etc)
@@ -36,7 +37,8 @@ def get_type(word) :
     considered as a verb although it can be considered as a noun.
     '''
     # TODO: write code here
-    return wordtype
+    word_type = nltk.corpus.brown.tagged_words(tagset='universal')
+    return word_type
 
 def is_concrete_noun(noun) :
     '''
@@ -78,16 +80,17 @@ def all_consonant_sound() :
     '''
     Return  a list of all possible starting consonant sound.
     '''
-    # TODO: write code here
-    return []
+    cons_list = ['B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
+    , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
+    return cons_list
 
 def all_vowel_sound() :
     '''
     Return  a list of all possible starting vowel sound.
     '''
-    # TODO: write code here
-    return []
-
+    vow_list = ['AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
+    , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW']; 
+    return vow_list
 
 def get_consonant_sound(word, syllable_index) :
     '''
@@ -97,12 +100,10 @@ def get_consonant_sound(word, syllable_index) :
     
     For example, the 0th syllable of the word hippo is [hip] (sound).
     '''
-    # TODO: write code here
-    return 
 
 def get_vowel_sound(word, syllable_index) :
     '''
-    Return the starting consonant sound (str) of the syllable_index 
+    Return the consonant sound (str) of the syllable_index 
     position of the word. The index is counted from 0..n from front 
     to back.
     
@@ -113,7 +114,12 @@ def get_vowel_sound(word, syllable_index) :
 
 # Test cases:
 if __name__ == '__main__' :
+    assert(all_consonant_sound()) == ['B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
+    , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
+    assert(all_vowel_sound()) == ['AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
+    , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW']
     assert get_num_syllable("Acceleration") == 5
+    assert get_num_syllable("asdf") == -1
     assert get_first_character('Game') == 'g'
     assert starts_with_consonant('Hello') == True 
     assert starts_with_consonant('University') == False

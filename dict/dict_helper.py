@@ -5,14 +5,24 @@
 # dictionary.
 
 import nltk
+from nltk.corpus import cmudict
+
+# get CMU pronouncing dictionary
+p_dict = cmudict.dict()
 
 def get_num_syllable(word) :
     '''
     Return the number of syllable a word (string) has.
+    Throw KeyError exception if the word is not in the dictionary.
+    This only returns the first phoneme of the word in cmudict.
     '''
-    # TODO: write code here
-    # When finished writing, remove TODO tag.
-    return countword
+
+    # save the number vowel phone in each phoneme of the word
+    # vowel phone will have an in integer at the end
+    syl_list = [len(list(y for y in x if y[-1].isdigit())) for x in p_dict[word.lower()]]
+    # get the number of syllable of the first phoneme of the word
+    count_syl= syl_list[0]
+    return count_syl
 
 def get_type(word) :
     '''
@@ -52,7 +62,9 @@ def starts_with_vowel(word) :
     '''
     Return whether the string word starts with a vowel or not.
     '''
-    # TODO: write code here
+    vowels = ["a", "e", "i", "o", "u"]
+    if(get_first_character(word) in vowels) :
+        return False
     return True
 
 def starts_with_consonant(word) :
@@ -65,16 +77,17 @@ def all_consonant_sound() :
     '''
     Return  a list of all possible starting consonant sound.
     '''
-    # TODO: write code here
-    return []
+    cons_list = ['B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
+    , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
+    return cons_list
 
 def all_vowel_sound() :
     '''
     Return  a list of all possible starting vowel sound.
     '''
-    # TODO: write code here
-    return []
-
+    vow_list = ['AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
+    , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW'] 
+    return vow_list
 
 def get_consonant_sound(word, syllable_index) :
     '''
@@ -100,4 +113,11 @@ def get_vowel_sound(word, syllable_index) :
 
 # Test cases:
 if __name__ == '__main__' :
+    assert all_consonant_sound() == ['B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
+    , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
+    assert all_vowel_sound() == ['AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
+    , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW']
+    assert get_num_syllable("Acceleration") == 5
     assert get_first_character('Game') == 'g'
+    assert starts_with_consonant('Hello') == True 
+    assert starts_with_consonant('University') == False

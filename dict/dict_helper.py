@@ -16,12 +16,13 @@ def get_num_syllable(word) :
     Throw KeyError exception if the word is not in the dictionary.
     This only returns the first phoneme of the word in cmudict.
     '''
-
+    word = word.lower()
+    # a word may have many pronunciations -- for the sake of
+    # simplicity, we can just use the first one
+    pronunciation = p_dict[word][0]
     # save the number vowel phone in each phoneme of the word
     # vowel phone will have an in integer at the end
-    syl_list = [len(list(y for y in x if y[-1].isdigit())) for x in p_dict[word.lower()]]
-    # get the number of syllable of the first phoneme of the word
-    count_syl= syl_list[0]
+    count_syl = len([phoneme for phoneme in pronunciation if phoneme[-1].isdigit()])
     return count_syl
 
 def get_type(word) :
@@ -120,4 +121,4 @@ if __name__ == '__main__' :
     assert get_num_syllable("Acceleration") == 5
     assert get_first_character('Game') == 'g'
     assert starts_with_consonant('Hello') == True 
-    assert starts_with_consonant('University') == False
+    assert starts_with_consonant('university') == False

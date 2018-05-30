@@ -121,4 +121,6 @@ if __name__ == '__main__' :
     assert get_num_syllable("Acceleration") == 5
     assert get_first_character('Game') == 'g'
     assert starts_with_consonant('Hello') == True 
+    assert starts_with_consonant('hello') == True
+    assert starts_with_consonant('University') == False
     assert starts_with_consonant('university') == False

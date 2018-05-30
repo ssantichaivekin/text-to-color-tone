@@ -63,10 +63,8 @@ def starts_with_vowel(word) :
     '''
     Return whether the string word starts with a vowel or not.
     '''
-    vowels = ["a", "e", "i", "o", "u"]
-    if(get_first_character(word) in vowels) :
-        return False
-    return True
+    vowels = 'aeiou'
+    return get_first_character(word) in vowels
 
 def starts_with_consonant(word) :
     '''

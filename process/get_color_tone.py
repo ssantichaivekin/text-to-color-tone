@@ -14,22 +14,21 @@ Ideas: Christie Chan's MS project
 # The import statement is essentially the index of this app.
 
 # Use Google API to find the image links
-from get_image_links import get_image_links
+from downloader.get_image_links import get_image_links
 # Use request to download images
-from download_images import download_images
+from downloader.download_images import download_images
 # Use opencv(cv2) to read images into np.ndarray image format
 from knn_process import read_image
 # Use opencv(cv2) to read images into np.ndarray single list format
 from knn_process import get_pixel_list
 # From the single list format, use Scikit's KNN to compute clusters
-from knn_process import get_clusters
+from knn_process import get_clusters_from_pixel_list
 # From clusters, create a bar, which can be then converted to a plot
 from plot_utils import get_bar
 
 import matplotlib.pyplot as plt
 
-
-def get_color_tone(text) :
+def get_clusters_from_text(text) :
     # Download images from text and get the image paths
     # img_paths are where the images are stored on the client.
     links = get_image_links(text)
@@ -38,7 +37,20 @@ def get_color_tone(text) :
     # Read and process the images using Scikit's KNN.
     pixel_list = get_pixel_list(img_paths)
     # Get the KNN clusters. We are finding  clusters in the example.
-    clusters = get_clusters(pixel_list, 5)
+    clusters = get_clusters_from_pixel_list(pixel_list, 5)
+    return clusters
+
+
+def get_color_tone(text) :
+    # Download images from text and get the image paths
+    # img_paths are where the images are stored on the client.
+    links = get_image_links(text)
+    img_paths = download_images(links, text)
+
+    # Read and process the images using Scikit's KNN.
+    pixel_list = get_pixel_list(img_paths)
+    # Get the KNN clusters. We are finding  clusters in the example.
+    clusters = get_clusters_from_pixel_list(pixel_list, 5)
 
     # Plotting :
     color_tone_bar = get_bar(clusters)

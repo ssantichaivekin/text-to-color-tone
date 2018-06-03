@@ -33,7 +33,7 @@ def get_pixel_list(img_paths) :
     pixel_list = concatenate(pixel_lists)
     return pixel_list
 
-def get_clusters(pixel_list, num_clusters=5) :
+def get_clusters_from_pixel_list(pixel_list, num_clusters=5) :
     '''
     Get the KNN clusters from the pixel list.
     '''

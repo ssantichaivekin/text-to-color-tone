@@ -1,3 +1,7 @@
+Note :
+
+Please run the current version of code from the project folder using ipython. There is a little import problem.
+
 This is a python example that displays the color tone of a text. The process of transforming text to color works as follows:
 
 1. Use Google search API to search images using the text as the query.

@@ -13,7 +13,7 @@ def download_images(image_links, file_prefix='temp') :
     imgnames = []
     for i, link in zip(range(len(image_links)), image_links) :
         r = requests.get(link)
-        imgname = './assets/%s-%d.jpg' % (file_prefix, i)
+        imgname = './assets/pics/%s-%d.jpg' % (file_prefix, i)
         with open(imgname, 'wb') as f:
             f.write(r.content)
         imgnames += [imgname]

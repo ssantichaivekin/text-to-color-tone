@@ -28,16 +28,17 @@ from plot_utils import get_bar
 
 import matplotlib.pyplot as plt
 
-def get_clusters_from_text(text) :
+def get_clusters_from_text(text, 20, 20) :
     # Download images from text and get the image paths
     # img_paths are where the images are stored on the client.
-    links = get_image_links(text)
-    img_paths = download_images(links)
+    links = get_image_links(text, num_links)
+
+    img_paths = download_images(links, text)
 
     # Read and process the images using Scikit's KNN.
     pixel_list = get_pixel_list(img_paths)
     # Get the KNN clusters. We are finding  clusters in the example.
-    clusters = get_clusters_from_pixel_list(pixel_list, 5)
+    clusters = get_clusters_from_pixel_list(pixel_list, num_clusters)
     return clusters
 
 

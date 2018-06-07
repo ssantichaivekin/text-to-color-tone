@@ -9,11 +9,26 @@ from process.get_color_tone import get_clusters_from_text
 # of that color
 from process.plot_utils import centroid_histogram
 
-def print_info(text, folderpath='./assets/info/') :
+import numpy as np
+
+def save_info(text, folderpath='./assets/info/') :
     '''
     Print the detailed color tone information of the
     text to two seperate files in assets/info.
     '''
     # Get the centers of the cluster
-    clusters = get_clusters_from_text(text)
+    # This uses 8 top images and produces 8 clusters
+    clusters = get_clusters_from_text(text, 8, 8)
     centers = clusters.cluster_centers_
+    hist = centroid_histogram(clusters)
+
+    filename = folderpath + text + '-centers.csv'
+    np.savetxt(filename, centers, delimiter=',')
+    filename = folderpath + text + '-hist.csv'
+    np.savetxt(filename, hist, delimiter=',')
+
+
+if __name__ == '__main__' :
+    save_info('hello')
+
+

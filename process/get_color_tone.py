@@ -18,17 +18,17 @@ from downloader.get_image_links import get_image_links
 # Use request to download images
 from downloader.download_images import download_images
 # Use opencv(cv2) to read images into np.ndarray image format
-from knn_process import read_image
+from process.knn_process import read_image
 # Use opencv(cv2) to read images into np.ndarray single list format
-from knn_process import get_pixel_list
+from process.knn_process import get_pixel_list
 # From the single list format, use Scikit's KNN to compute clusters
-from knn_process import get_clusters_from_pixel_list
+from process.knn_process import get_clusters_from_pixel_list
 # From clusters, create a bar, which can be then converted to a plot
-from plot_utils import get_bar
+from process.plot_utils import get_bar
 
 import matplotlib.pyplot as plt
 
-def get_clusters_from_text(text, 20, 20) :
+def get_clusters_from_text(text, num_links, num_clusters) :
     # Download images from text and get the image paths
     # img_paths are where the images are stored on the client.
     links = get_image_links(text, num_links)
@@ -51,7 +51,7 @@ def get_color_tone(text) :
     # Read and process the images using Scikit's KNN.
     pixel_list = get_pixel_list(img_paths)
     # Get the KNN clusters. We are finding  clusters in the example.
-    clusters = get_clusters_from_pixel_list(pixel_list, 5)
+    clusters = get_clusters_from_pixel_list(pixel_list, 8)
 
     # Plotting :
     color_tone_bar = get_bar(clusters)

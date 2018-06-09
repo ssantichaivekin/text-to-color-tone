@@ -38,21 +38,6 @@ def get_type(word) :
     # TODO: write code here
     return wordtype
 
-def is_concrete_noun(noun) :
-    '''
-    Return whether the string noun is a concrete noun (True) or an
-    anstract noun (False).
-    '''
-    # TODO: write code here
-    return True
-
-def is_abstract_noun(noun) :
-    '''
-    Return whether the string noun is an abstract noun (True) or a
-    concrete noun.
-    '''
-    return not is_concrete_noun(noun)
-
 def get_first_character(word) :
     '''
     Get the first character of a word.
@@ -88,7 +73,7 @@ def all_vowel_sound() :
     , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW'] 
     return vow_list
 
-def get_consonant_sound(word, syllable_index) :
+def get_first_consonant_sound(word, syllable_index) :
     '''
     Return the starting consonant sound (str) of the syllable_index 
     position of the word. The index is counted from 0..n from front 
@@ -99,7 +84,7 @@ def get_consonant_sound(word, syllable_index) :
     # TODO: write code here
     return 
 
-def get_vowel_sound(word, syllable_index) :
+def get_first_vowel_sound(word, syllable_index) :
     '''
     Return the starting consonant sound (str) of the syllable_index 
     position of the word. The index is counted from 0..n from front 

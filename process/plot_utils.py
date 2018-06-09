@@ -10,7 +10,6 @@ link: https://www.pyimagesearch.com/2014/05/26/opencv-python-k-means-color-clust
 
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
 
 def centroid_histogram(clt):
 	# grab the number of different clusters and create a histogram

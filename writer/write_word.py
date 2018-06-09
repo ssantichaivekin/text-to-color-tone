@@ -27,6 +27,13 @@ def save_info(text, folderpath='./assets/info/') :
     filename = folderpath + text + '-hist.csv'
     np.savetxt(filename, hist, delimiter=',')
 
+def bulk_save_info(textlist, folderpath='./assets/info/') :
+    '''
+    Run save info for each text in textlist.
+    '''
+    for text in textlist :
+        save_info(text, folderpath)
+
 
 if __name__ == '__main__' :
     save_info('hello')

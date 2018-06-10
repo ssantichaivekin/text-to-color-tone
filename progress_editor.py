@@ -7,7 +7,7 @@ def write_all_progress(progress_list) :
     '''
     with open('progress.txt', 'w') as f :
         for progress_name, progress_status in progress_list :
-            print('%s:%s' % (progressname, progress_status), file=f)
+            print('%s:%s' % (progress_name, progress_status), file=f)
 
 def init_progress(progressnamelist, initmsg='init') :
     '''
@@ -25,7 +25,7 @@ def read_all_progress() :
     progress_list = []
     with open('progress.txt') as f :
         for line in f :
-            progress_name, progress_status = line.split(':')
+            progress_name, progress_status = line.strip().split(':')
             progress_list += [(progress_name, progress_status)]
     return progress_list
 
@@ -69,8 +69,8 @@ def get_next_process() :
     '''
     progress_list = read_all_progress()
     for progress_name, progress_status in progress_list :
-        if progress_name == target_progress_name :
-            return progress_status
+        if progress_status != 'finished' :
+            return progress_name, progress_status
 
 def write_progress(target_progress_name, target_msg) :
     '''

@@ -23,7 +23,7 @@ def write_chunks() :
     words = get_all_words()
     for start in range(0, len(words), 1000) :
         wordset = words[start:start+1000]
-        filename = 'wordset-%d.txt' % start
+        filename = 'wordset-%06d.txt' % start
         pathname = './writer/wordset/'
         fullname = pathname + filename
         with open(fullname, 'w') as f :

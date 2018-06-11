@@ -16,13 +16,15 @@ def get_all_words() :
     return all_words
 
 
-def write_chunks() :
+def write_chunks(sep=1000, wordmax=1000000) :
     '''
     Write all chunks into a seperate file.
     '''
     words = get_all_words()
-    for start in range(0, len(words), 1000) :
-        wordset = words[start:start+1000]
+    for start in range(0, len(words), sep) :
+        if start > wordmax :
+            return
+        wordset = words[start:start+sep]
         filename = 'wordset-%06d.txt' % start
         pathname = './writer/wordset/'
         fullname = pathname + filename

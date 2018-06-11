@@ -26,8 +26,6 @@ from process.knn_process import get_clusters_from_pixel_list
 # From clusters, create a bar, which can be then converted to a plot
 from process.plot_utils import get_bar
 
-import matplotlib.pyplot as plt
-
 def get_clusters_from_text(text, num_links, num_clusters) :
     # Download images from text and get the image paths
     # img_paths are where the images are stored on the client.
@@ -43,6 +41,7 @@ def get_clusters_from_text(text, num_links, num_clusters) :
 
 
 def get_color_tone(text) :
+    import matplotlib.pyplot as plt
     # Download images from text and get the image paths
     # img_paths are where the images are stored on the client.
     links = get_image_links(text)

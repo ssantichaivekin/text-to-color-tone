@@ -69,7 +69,7 @@ def get_next_process() :
     '''
     progress_list = read_all_progress()
     for progress_name, progress_status in progress_list :
-        if progress_status != 'finished' :
+        if progress_status != 'success' :
             return progress_name, progress_status
 
 def write_progress(target_progress_name, target_msg) :

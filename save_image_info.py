@@ -8,16 +8,15 @@ import os
 from writer.write_word import save_info
 
 loc = os.path.abspath(__file__)
-# just strip everything but leave /
-os.chdir(loc.strip('save_image_info.py'))
-os.makedirs('./assets/info/', exist_ok=True)
-os.makedirs('./assets/pics/', exist_ok=True)
 
 # Check the current progress and run the program to continue the progress
 from progress_editor import get_next_process, write_progress, log_error
+from do_process import do_process
 process_name, process_status = get_next_process()
 assert process_status != 'failure'
-process_status
-
-if __name__ == '__main__' :
-    save_info('hippie')
+try :
+    do_process(process_name)
+    write_progress(process_name, 'success')
+except BaseException as err :
+    log_error(process_name, err)
+    write_progress(process_name, 'failure')

@@ -5,6 +5,7 @@ thumbnails.
 '''
 
 import requests
+import json
 from bs4 import BeautifulSoup
 
 def read_key(keyfilename='google-api-key.txt') :
@@ -26,6 +27,7 @@ def get_image_links(query, image_num=6) :
     Get a list of thumbnail links using the google API
     key.
     '''
+    print('Loading image:', query)
     key = read_key()
     engine_id = read_search_engine_id()
     s_type = 'photo'
@@ -48,7 +50,10 @@ def get_image_links(query, image_num=6) :
     link = 'https://www.googleapis.com/customsearch/v1'
     r = requests.get(link, params)
     thumbnail_links = []
-    for search_item in r.json()['items'] :
+    json_data = r.json()
+    with open('assets/jsons/%s-google-query.json' % query, 'w') as f:
+        json.dump(json_data, f)
+    for search_item in json_data['items'] :
         thumbnail_link = search_item['image']['thumbnailLink']
         # print(thumbnail_link)
         thumbnail_links += [thumbnail_link]

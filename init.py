@@ -28,7 +28,7 @@ if __name__ == '__main__' :
     processlist = os.listdir('./writer/wordset')
     try :
         processlist.remove('.DS_Store')
-    except OSError:
+    except ValueError :
         pass
     processlist.sort()
     init_progress(processlist)

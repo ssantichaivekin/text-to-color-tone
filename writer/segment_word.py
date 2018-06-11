@@ -10,7 +10,12 @@ def get_all_words() :
     '''
     We want words that appear on both dict.
     '''
-    all_words = list(set(pronun_word_list + def_word_list))
+    all_words = []
+    with open('count_1w.txt') as f :
+        for i, line in zip(range(31000), f) :
+            word, count = line.split()
+            all_words += [word]
+    # all_words = list(set(pronun_word_list + def_word_list))
     all_words = list(filter(str.isalpha, all_words))
     all_words = sorted(all_words)
     return all_words

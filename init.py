@@ -24,7 +24,7 @@ if __name__ == '__main__' :
         with open('google-api-key.txt', 'w') as f :
             f.write(key)
     # Real work starts here >> init :
-    write_chunks()
+    write_chunks(200)
     processlist = os.listdir('./writer/wordset')
     processlist.remove('.DS_Store')
     processlist.sort()

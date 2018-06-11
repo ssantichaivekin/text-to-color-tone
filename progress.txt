@@ -1,5 +1,5 @@
-wordset-000000.txt:init
-wordset-000010.txt:init
+wordset-000000.txt:success
+wordset-000010.txt:success
 wordset-000020.txt:init
 wordset-000030.txt:init
 wordset-000040.txt:init

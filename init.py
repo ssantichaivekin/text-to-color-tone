@@ -26,7 +26,10 @@ if __name__ == '__main__' :
     # Real work starts here >> init :
     write_chunks(200)
     processlist = os.listdir('./writer/wordset')
-    processlist.remove('.DS_Store')
+    try :
+        processlist.remove('.DS_Store')
+    except OSError:
+        pass
     processlist.sort()
     init_progress(processlist)
 

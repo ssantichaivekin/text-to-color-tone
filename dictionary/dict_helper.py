@@ -73,7 +73,7 @@ def all_vowel_sound() :
     , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW'] 
     return vow_list
 
-def get_first_consonant_sound(word, syllable_index) :
+def get_first_consonant_sound(word) :
     '''
     Return the starting consonant sound (str) of the syllable_index 
     position of the word. The index is counted from 0..n from front 
@@ -81,10 +81,17 @@ def get_first_consonant_sound(word, syllable_index) :
     
     For example, the 0th syllable of the word hippo is [hip] (sound).
     '''
-    # TODO: write code here
-    return 
+    word = word.lower()
+    # a word may have many pronunciations -- for the sake of
+    # simplicity, we can just use the first one
+    pronunciation = p_dict[word][0]
 
-def get_first_vowel_sound(word, syllable_index) :
+    for phoneme in pronunciation :
+        if(not phoneme[-1].isdigit()) :
+            return phoneme
+    return ''
+
+def get_first_vowel_sound(word) :
     '''
     Return the starting consonant sound (str) of the syllable_index 
     position of the word. The index is counted from 0..n from front 
@@ -92,11 +99,21 @@ def get_first_vowel_sound(word, syllable_index) :
     
     For example, the 1th syllable of the word hippo is [po] (sound).
     '''
-    # TODO: write code here
-    return 
+    word = word.lower()
+    # a word may have many pronunciations -- for the sake of
+    # simplicity, we can just use the first one
+
+    
+    pronunciation = p_dict[word][0]
+    for phoneme in pronunciation :
+        if(phoneme[-1].isdigit()) :
+            return phoneme[:-1]
+    return ''
 
 # Test cases:
 if __name__ == '__main__' :
+    assert(get_first_consonant_sound('United') == 'Y')
+    assert(get_first_vowel_sound('United') == 'UW')
     assert all_consonant_sound() == ['B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
     , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
     assert all_vowel_sound() == ['AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'

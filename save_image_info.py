@@ -16,7 +16,7 @@ from do_process import do_process
 
 if has_next_process() :
     process_name, process_status = get_next_process()
-    assert process_status != 'failure'
+    # assert process_status != 'failure'
     try :
         do_process(process_name)
         write_progress(process_name, 'success')

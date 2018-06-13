@@ -8,6 +8,7 @@ import os
 from writer.write_word import save_info
 
 loc = os.path.abspath(__file__)
+os.chdir(loc.strip('save_image_info.py'))
 
 # Check the current progress and run the program to continue the progress
 from progress_editor import get_next_process, write_progress, log_error

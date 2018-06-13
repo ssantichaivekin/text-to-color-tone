@@ -72,6 +72,9 @@ def get_next_process() :
         if progress_status != 'success' :
             return progress_name, progress_status
 
+def has_next_process() :
+    return bool(get_next_process())
+
 def write_progress(target_progress_name, target_msg) :
     '''
     Modify progress.txt so that the progress message of the 

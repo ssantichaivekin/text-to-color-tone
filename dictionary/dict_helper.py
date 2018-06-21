@@ -61,7 +61,7 @@ def all_consonant_sound() :
     '''
     Return  a list of all possible starting consonant sound.
     '''
-    cons_list = ['B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
+    cons_list = ['-', 'B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
     , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
     return cons_list
 
@@ -82,14 +82,12 @@ def get_first_consonant_sound(word) :
     For example, the 0th syllable of the word hippo is [hip] (sound).
     '''
     word = word.lower()
-    # a word may have many pronunciations -- for the sake of
-    # simplicity, we can just use the first one
     pronunciation = p_dict[word][0]
 
     for phoneme in pronunciation :
         if(not phoneme[-1].isdigit()) :
             return phoneme
-    return ''
+    return '-'
 
 def get_first_vowel_sound(word) :
     '''
@@ -102,19 +100,16 @@ def get_first_vowel_sound(word) :
     word = word.lower()
     # a word may have many pronunciations -- for the sake of
     # simplicity, we can just use the first one
-
-    
     pronunciation = p_dict[word][0]
     for phoneme in pronunciation :
         if(phoneme[-1].isdigit()) :
             return phoneme[:-1]
-    return ''
 
 # Test cases:
 if __name__ == '__main__' :
     assert(get_first_consonant_sound('United') == 'Y')
     assert(get_first_vowel_sound('United') == 'UW')
-    assert all_consonant_sound() == ['B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
+    assert all_consonant_sound() == ['-', 'B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
     , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
     assert all_vowel_sound() == ['AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
     , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW']
@@ -124,3 +119,5 @@ if __name__ == '__main__' :
     assert starts_with_consonant('hello') == True
     assert starts_with_consonant('University') == False
     assert starts_with_consonant('university') == False
+    assert get_first_consonant_sound('hello') == 'HH'
+    assert get_first_vowel_sound('hello') == 'AH'

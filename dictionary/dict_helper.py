@@ -4,8 +4,8 @@
 # Note that these functions will require the NLTK
 # dictionary.
 
-import nltk
 from nltk.corpus import cmudict
+from nltk.corpus import wordnet
 
 # get CMU pronouncing dictionary
 p_dict = cmudict.dict()
@@ -28,14 +28,23 @@ def get_num_syllable(word) :
 def get_type(word) :
     '''
     Return the type of the word (noun, verb, adjective, etc)
-    The list of symbols used are: [TODO: list ALL the symbols that
-    you want to use here ('n', 'v', 'adj', etc).]
+    The list of symbols used are:
+
+    ADJ, ADJ_SAT, ADV, NOUN, VERB = 'a', 's', 'r', 'n', 'v'
 
     If there are many meaning type a word can take, we choose to use
     the first meaning. For example, the word 'transform' should be
     considered as a verb although it can be considered as a noun.
     '''
-    # TODO: write code here
+    synsets = wordnet.synsets(word)
+    if synsets == [] :
+        raise KeyError('No word in dictionary')
+    # In [7]: wordnet.synsets('dog')
+    # Out[7]:
+    # [Synset('dog.n.01'),
+    # Synset('frump.n.01'),
+    # ...]
+    wordtype = synsets[0].pos()
     return wordtype
 
 def get_first_character(word) :
@@ -121,3 +130,5 @@ if __name__ == '__main__' :
     assert starts_with_consonant('university') == False
     assert get_first_consonant_sound('hello') == 'HH'
     assert get_first_vowel_sound('hello') == 'AH'
+    assert get_type('dog') == 'n'
+    assert get_type('beautiful') == 'a'

@@ -9,17 +9,16 @@ from dictionary.dict_helper import get_type, get_first_character, get_first_cons
 from dictionary.dict_helper import all_consonant_sound, all_vowel_sound
 from string import ascii_lowercase
 
-# TODO: write the lambdas!
 wordtypes = [
-    {'name': 'noun', 'func': lambda x: x},
-    {'name': 'verb', 'func': lambda x: x},
+    # ADJ, ADJ_SAT, ADV, NOUN, VERB = 'a', 's', 'r', 'n', 'v'
+    {'name': 'noun', 'func': lambda w: get_type(w) == 'n'},
+    {'name': 'verb', 'func': lambda w: get_type(w) == 'v'},
     # we should merge adj and adj-sat
-    {'name': 'adj', 'func': lambda x: x},
-    {'name': 'adj-sat', 'func': lambda x: x},
-    {'name': 'adj', 'func': lambda x: x},
+    {'name': 'adj', 'func': lambda w: get_type(w) == 'n' or get_type(w) == 's'},
+    {'name': 'adv', 'func': lambda w: get_type(w) == 'r'},
 ]
 
-first_character_types = [
+first_character_alpha = [
     {
         'name': 'starts-with-%s' % character,
         'func': lambda w: get_first_character(w) == character
@@ -43,4 +42,13 @@ first_vowel_sound = [
     for sound in all_vowel_sound()
 ]
 
+# product of groups :
+word_type_first_alpha = group_product(func_and, name_concat, wordtypes, first_character_alpha)
+word_type_first_con_sound = group_product(func_and, name_concat, wordtypes, first_con_sound)
+word_type_first_vow_sound = group_product(func_and, name_concat, wordtypes, first_vowel_sound)
+
+# all groups :
+all_groups = []
+all_groups += wordtypes + first_character_alpha + first_con_sound + first_vowel_sound
+all_groups += word_type_first_alpha + word_type_first_con_sound + word_type_first_vow_sound
 

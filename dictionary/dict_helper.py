@@ -70,7 +70,7 @@ def all_consonant_sound() :
     '''
     Return  a list of all possible starting consonant sound.
     '''
-    cons_list = ['-', 'B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
+    cons_list = ['none', 'B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
     , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
     return cons_list
 
@@ -78,7 +78,7 @@ def all_vowel_sound() :
     '''
     Return  a list of all possible starting vowel sound.
     '''
-    vow_list = ['-', 'AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
+    vow_list = ['none', 'AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
     , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW'] 
     return vow_list
 
@@ -96,7 +96,7 @@ def get_first_consonant_sound(word) :
     for phoneme in pronunciation :
         if(not phoneme[-1].isdigit()) :
             return phoneme
-    return '-'
+    return 'none'
 
 def get_first_vowel_sound(word) :
     '''
@@ -115,7 +115,7 @@ def get_first_vowel_sound(word) :
             return phoneme[:-1]
     # Don't know why, but these words in cmudict does not have a vowel sound
     # {'fs', 'mmmm', 'shh', 'ths'}
-    return '-'
+    return 'none'
 
 # Test cases:
 if __name__ == '__main__' :
@@ -131,9 +131,9 @@ if __name__ == '__main__' :
     assert get_first_vowel_sound('hello') == 'AH'
     assert get_type('dog') == 'n'
     assert get_type('beautiful') == 'a'
-    assert all_consonant_sound() == ['-', 'B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
+    assert all_consonant_sound() == ['none', 'B', 'CH', 'D', 'DH', 'F', 'G', 'HH', 'JH', 'K'
     , 'L', 'M', 'N', 'NG', 'P', 'R', 'S', 'SH', 'T', 'TH', 'V', 'W', 'Y', 'Z', 'ZH']
-    assert all_vowel_sound() == ['-', 'AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
+    assert all_vowel_sound() == ['none', 'AA', 'AE','AH', 'AO', 'AW', 'AY', 'EH', 'ER','EY'
     , 'IH', 'IY', 'OW', 'OY', 'UH', 'UW']
     all_consonant_arr = set([get_first_consonant_sound(x) for x in list(p_dict.keys()) ])
     assert all_consonant_arr == set(all_consonant_sound())

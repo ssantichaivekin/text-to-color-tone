@@ -11,6 +11,12 @@ from process.plot_utils import centroid_histogram
 
 import numpy as np
 
+def write_info(name, centers, hist, folderpath) :
+    filename = folderpath + text + '-centers.csv'
+    np.savetxt(filename, centers, delimiter=',')
+    filename = folderpath + text + '-hist.csv'
+    np.savetxt(filename, hist, delimiter=',')
+
 def save_info(text, folderpath='./assets/info/') :
     '''
     Print the detailed color tone information of the
@@ -18,14 +24,11 @@ def save_info(text, folderpath='./assets/info/') :
     '''
     # Get the centers of the cluster
     # This uses 8 top images and produces 8 clusters
-    clusters = get_clusters_from_text(text, 8, 8)
+    clusters, _ = get_clusters_from_text(text, 8, 8)
     centers = clusters.cluster_centers_
     hist = centroid_histogram(clusters)
 
-    filename = folderpath + text + '-centers.csv'
-    np.savetxt(filename, centers, delimiter=',')
-    filename = folderpath + text + '-hist.csv'
-    np.savetxt(filename, hist, delimiter=',')
+    write_info(text, centers, hist, folderpath)
 
 def bulk_save_info(textlist, folderpath='./assets/info/') :
     '''

@@ -36,44 +36,38 @@ def get_clusters_from_text(text, num_links, num_clusters) :
     pixel_list = get_pixel_list(img_paths)
     # Get the KNN clusters. We are finding  clusters in the example.
     clusters = get_clusters_from_pixel_list(pixel_list, num_clusters)
-    return clusters
+    return clusters, img_paths
 
-
-def get_color_tone(text) :
+def plot_clusters(title, clusters, img_paths=None, show_on_screen=True, targetname=None) :
     import matplotlib.pyplot as plt
-    # Download images from text and get the image paths
-    # img_paths are where the images are stored on the client.
-    links = get_image_links(text)
-    img_paths = download_images(links, text)
-
-    # Read and process the images using Scikit's KNN.
-    pixel_list = get_pixel_list(img_paths)
-    # Get the KNN clusters. We are finding  clusters in the example.
-    clusters = get_clusters_from_pixel_list(pixel_list, 8)
 
     # Plotting :
     color_tone_bar = get_bar(clusters)
     # Set the plot name
-    plt.suptitle('Color tone of: %s' % text, fontsize = 16)
+    plt.suptitle('Color tone of: %s' % title, fontsize = 16)
 
     # Plot color tone
     bottom_ax = plt.subplot(212)
     bottom_ax.imshow(color_tone_bar)
 
-    # Example Picture 1
-    ex_img0 = read_image(img_paths[0])
-    upleft_ax = plt.subplot(221)
-    upleft_ax.imshow(ex_img0)
-    upleft_ax.axis('off')
+    if img_paths :
+        # Example Picture 1
+        ex_img0 = read_image(img_paths[0])
+        upleft_ax = plt.subplot(221)
+        upleft_ax.imshow(ex_img0)
+        upleft_ax.axis('off')
 
-    # Example Picture 2
-    ex_img1 = read_image(img_paths[1])
-    upright_ax = plt.subplot(222)
-    upright_ax.imshow(ex_img1)
-    upright_ax.axis('off')
+        # Example Picture 2
+        ex_img1 = read_image(img_paths[1])
+        upright_ax = plt.subplot(222)
+        upright_ax.imshow(ex_img1)
+        upright_ax.axis('off')
 
     # Show the results on the screen
-    plt.show()
+    if show_on_screen :
+        plt.show()
+    else :
+        plt.savefig(targetname)
 
 
 if __name__ == '__main__' :
@@ -82,6 +76,11 @@ if __name__ == '__main__' :
     parser = argparse.ArgumentParser(description='Obtain color tone image from text.')
     parser.add_argument('text', type=str, help='Text we use to find the color tone')
     text = vars(parser.parse_args())['text']
-    get_color_tone(text)
+    clusters, img_paths = get_clusters_from_text(text, 8, 8)
+    plot_clusters(text, clusters, img_paths)
+
+    # for debug
+    # import os
+    # plot_clusters(clusters, img_paths, False, os.path.expanduser('~/Desktop/tree.png'))
 
     

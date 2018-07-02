@@ -8,7 +8,6 @@ The program also support command line arguments
 using the argparse library.
 
 Author: Santi Santichaivekin
-Ideas: Christie Chan's MS project
 '''
 
 # The import statement is essentially the index of this app.

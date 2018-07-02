@@ -25,7 +25,7 @@ def get_num_syllable(word) :
     count_syl = len([phoneme for phoneme in pronunciation if phoneme[-1].isdigit()])
     return count_syl
 
-def get_type(word) :
+def is_type(word, pos_type) :
     '''
     Return the type of the word (noun, verb, adjective, etc)
     The list of symbols used are:
@@ -39,13 +39,10 @@ def get_type(word) :
     synsets = wordnet.synsets(word)
     if synsets == [] :
         raise KeyError('No word in dictionary')
-    # In [7]: wordnet.synsets('dog')
-    # Out[7]:
-    # [Synset('dog.n.01'),
-    # Synset('frump.n.01'),
-    # ...]
-    wordtype = synsets[0].pos()
-    return wordtype
+    for synset in synsets :
+        if pos_type == synset.pos() :
+            return True
+    return False
 
 def get_first_character(word) :
     '''
@@ -93,10 +90,11 @@ def get_first_consonant_sound(word) :
     word = word.lower()
     pronunciation = p_dict[word][0]
 
-    for phoneme in pronunciation :
-        if(not phoneme[-1].isdigit()) :
-            return phoneme
-    return 'none'
+    phoneme = pronunciation[0]
+    if(not phoneme[-1].isdigit()) :
+        return phoneme
+    else :
+        return 'none'
 
 def get_first_vowel_sound(word) :
     '''

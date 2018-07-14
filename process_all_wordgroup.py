@@ -43,6 +43,8 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
     
 
 if __name__ == '__main__' :
+    import matplotlib
+    matplotlib.use('Agg')
     # get all_wordgroups and wordlist
     from dictionary.word_group_generator import all_groups
     # open/write the assets/wordgroup folder

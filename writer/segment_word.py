@@ -10,6 +10,7 @@ def get_all_words() :
     '''
     We want words that appear on both dict.
     '''
+
     all_words = []
     with open('count_1w.txt') as f :
         for i, line in zip(range(31000), f) :

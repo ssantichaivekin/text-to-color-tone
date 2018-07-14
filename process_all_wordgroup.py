@@ -8,29 +8,39 @@ write a function to take them from the folder and visualize them.
 
 import os
 
+from dictionary.get_pixel_list import gen_process
+from process.knn_process import get_clusters_from_pixel_list
+from plot_utils import centroid_histogram
+from writer.write_word import write_info
+from process.get_color_tone import plot_clusters
+
 def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
     '''
     Process all wordgroups specified in all_wordgroups.
     Save the csv, hist, and processed image to targetpath.
     '''
 
-    print(all_wordgroups[:10])
-    print(wordlist[:10])
+    print(all_wordgroups[:5])
+    print(wordlist[:100])
     print(len(wordlist))
     print(targetpath[:10])
 
-    # calls dictionary.get_pixel_list => gen_process
-    # to get the generator of the list we will use
+    for wordgroup in all_wordgroups :
+        # calls dictionary.get_pixel_list => gen_process
+        # to get the generator of the list we will use
+        groupname, pixellist = gen_process(wordgroup, wordlist)
+        # calls process.knn_process => get_clusters_from_pixel_list
+        # to get a knn-cluster
+        clusters = get_clusters_from_pixel_list(pixellist)
+        # calls process.plot_utils => centroid histogram
+        # to get a hist from the cluster
+        hist = centroid_histogram(clusters)
+        # calls writer.write_info
+        write_info(groupname, clusters.cluster_centers_, hist, targetpath)
+        # calls process.get_color_tone => plot_clusters(title, clusters, img_paths, False, targetname) :
+        targetname = targetpath + groupname + '.png'
+        plot_clusters(groupname, clusters, None, False, targetname)
 
-    # calls process.knn_process => get_clusters_from_pixel_list
-    # to get a knn-cluster
-
-    # calls process.plot_utils => centroid histogram
-    # to get a hist from the cluster
-
-    # calls writer.write_info
-
-    # calls process.get_color_tone => plot_clusters(clusters, img_paths, False, targetname) :
 
     
 

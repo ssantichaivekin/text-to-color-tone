@@ -31,7 +31,7 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
         # to get a knn-cluster
         if len(pixellist) == 0 :
             continue
-        clusters = get_clusters_from_pixel_list(pixellist, 20)
+        clusters = get_clusters_from_pixel_list(pixellist, 12)
         # calls process.plot_utils => centroid histogram
         # to get a hist from the cluster
         hist = centroid_histogram(clusters)

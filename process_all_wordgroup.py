@@ -24,6 +24,7 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
         # calls dictionary.get_pixel_list => gen_process
         # to get the generator of the list we will use
         groupname, pixellist = gen_process(wordgroup, wordlist)
+        print(groupname)
         # calls process.knn_process => get_clusters_from_pixel_list
         # to get a knn-cluster
         if len(pixellist) == 0 :
@@ -56,3 +57,5 @@ if __name__ == '__main__' :
     targetpath = './assets/wordgroup/'
 
     process_all_wordgroup(all_groups, wordlist, targetpath)
+
+    print('success')

@@ -19,12 +19,6 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
     Process all wordgroups specified in all_wordgroups.
     Save the csv, hist, and processed image to targetpath.
     '''
-    all_wordgroups = all_wordgroups[:5]
-    wordlist = wordlist[:100]
-    print(all_wordgroups)
-    print(wordlist)
-    print(len(wordlist))
-    print(targetpath[:10])
 
     for wordgroup in all_wordgroups :
         # calls dictionary.get_pixel_list => gen_process
@@ -32,6 +26,8 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
         groupname, pixellist = gen_process(wordgroup, wordlist)
         # calls process.knn_process => get_clusters_from_pixel_list
         # to get a knn-cluster
+        if len(pixellist) == 0 :
+            continue
         clusters = get_clusters_from_pixel_list(pixellist)
         # calls process.plot_utils => centroid histogram
         # to get a hist from the cluster

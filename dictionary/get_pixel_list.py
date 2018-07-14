@@ -18,8 +18,8 @@ def get_pixel_list(wordlist) :
     alllist = []
     for word in wordlist :
         pixellist = []
-        centers = genfromtxt('assets/info/%s-centers.csv' % word, delimiter = ',')
-        hist = genfromtxt('assets/info/%s-hist.csv' % word, delimiter = ',')
+        centers = genfromtxt('./assets/info/%s-centers.csv' % word, delimiter = ',')
+        hist = genfromtxt('./assets/info/%s-hist.csv' % word, delimiter = ',')
         for i in range(len(centers)) :
             prob = int(hist[i] * 100)
             pixellist += [centers[i] for _ in range(prob)]

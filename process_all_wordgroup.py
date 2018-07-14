@@ -10,7 +10,7 @@ import os
 
 from dictionary.get_pixel_list import gen_process
 from process.knn_process import get_clusters_from_pixel_list
-from plot_utils import centroid_histogram
+from process.plot_utils import centroid_histogram
 from writer.write_word import write_info
 from process.get_color_tone import plot_clusters
 
@@ -19,9 +19,10 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
     Process all wordgroups specified in all_wordgroups.
     Save the csv, hist, and processed image to targetpath.
     '''
-
-    print(all_wordgroups[:5])
-    print(wordlist[:100])
+    all_wordgroups = all_wordgroups[:5]
+    wordlist = wordlist[:100]
+    print(all_wordgroups)
+    print(wordlist)
     print(len(wordlist))
     print(targetpath[:10])
 

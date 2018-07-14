@@ -12,9 +12,9 @@ from process.plot_utils import centroid_histogram
 import numpy as np
 
 def write_info(name, centers, hist, folderpath) :
-    filename = folderpath + text + '-centers.csv'
+    filename = folderpath + name + '-centers.csv'
     np.savetxt(filename, centers, delimiter=',')
-    filename = folderpath + text + '-hist.csv'
+    filename = folderpath + name + '-hist.csv'
     np.savetxt(filename, hist, delimiter=',')
 
 def save_info(text, folderpath='./assets/info/') :

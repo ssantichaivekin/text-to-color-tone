@@ -4,3 +4,4 @@ assets/*
 .DS_Store
 writer/wordset/*
 progress.txt
+errorlog.txt

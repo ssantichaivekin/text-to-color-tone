@@ -1,2 +1,0 @@
-wordset-000000.txt
-name 'text' is not defined

@@ -14,6 +14,8 @@ from process.plot_utils import centroid_histogram
 from writer.write_word import write_info
 from process.get_color_tone import plot_clusters
 
+from datetime import datetime
+
 def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
     '''
     Process all wordgroups specified in all_wordgroups.
@@ -24,12 +26,12 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
         # calls dictionary.get_pixel_list => gen_process
         # to get the generator of the list we will use
         groupname, pixellist = gen_process(wordgroup, wordlist)
-        print(groupname)
+        print(datetime.now(), groupname, len(pixellist))
         # calls process.knn_process => get_clusters_from_pixel_list
         # to get a knn-cluster
         if len(pixellist) == 0 :
             continue
-        clusters = get_clusters_from_pixel_list(pixellist)
+        clusters = get_clusters_from_pixel_list(pixellist, 20)
         # calls process.plot_utils => centroid histogram
         # to get a hist from the cluster
         hist = centroid_histogram(clusters)

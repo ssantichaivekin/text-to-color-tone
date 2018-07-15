@@ -27,7 +27,7 @@ def get_image_links(query, image_num=6) :
     Get a list of thumbnail links using the google API
     key.
     '''
-    print('Loading image:', query)
+    print('Loading images:', query)
     key = read_key()
     engine_id = read_search_engine_id()
     s_type = 'photo'

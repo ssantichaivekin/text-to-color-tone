@@ -1,5 +1,3 @@
-Note :
-
 This is a python app that displays the color tone of a text. The process of transforming text to color works as follows:
 
 1. Use Google search API to search images using the text as the query.

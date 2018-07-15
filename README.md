@@ -45,4 +45,6 @@ Another problem might be that nltk.corpus.wordnet treats word differently than w
 
 <img src="screenshots/starts-with-b-color-tone.png" width="400"/> <img src="screenshots/starts-with-x-color-tone.png" width="400"/>
 
+The results can be viewed in product/.
+
 Python Library Dependencies: scikit, matplotlib, opencv(cv2), requests, nltk

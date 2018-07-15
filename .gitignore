@@ -2,3 +2,7 @@ google-api-key.txt
 __pycache__
 assets/*
 .DS_Store
+writer/wordset/*
+progress.txt
+errorlog.txt
+procuct/*

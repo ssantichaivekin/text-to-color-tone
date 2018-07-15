@@ -21,7 +21,7 @@ wordtypes = [
 first_character_alpha = [
     {
         'name': 'starts-with-%s' % character,
-        'func': lambda w, chatacter=character: get_first_character(w) == character
+        'func': lambda w, character=character: get_first_character(w) == character
     }
     for character in list(ascii_lowercase)
 ]

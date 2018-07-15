@@ -45,6 +45,10 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
     
 
 if __name__ == '__main__' :
+    import os.path
+    import sys
+    if os.path.isfile('./success.txt') :
+         sys.exit()
     import matplotlib
     matplotlib.use('Agg')
     # get all_wordgroups and wordlist

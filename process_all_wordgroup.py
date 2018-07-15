@@ -46,7 +46,8 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
 
 if __name__ == '__main__' :
     import sys
-    if os.path.isfile('./success.txt') :
+    folderpath = os.path.dirname(os.path.abspath(__file__))
+    if os.path.isfile(folderpath + '/success.txt') :
          sys.exit()
     import matplotlib
     matplotlib.use('Agg')

@@ -29,7 +29,7 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
         print(datetime.now(), groupname, len(pixellist))
         # calls process.knn_process => get_clusters_from_pixel_list
         # to get a knn-cluster
-        if len(pixellist) >= 30000 :
+        if len(pixellist) < 30000 :
             continue
         clusters = get_clusters_from_pixel_list(pixellist, 12)
         # calls process.plot_utils => centroid histogram

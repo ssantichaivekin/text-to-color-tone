@@ -45,7 +45,6 @@ def process_all_wordgroup(all_wordgroups, wordlist, targetpath) :
     
 
 if __name__ == '__main__' :
-    import os.path
     import sys
     if os.path.isfile('./success.txt') :
          sys.exit()
@@ -66,4 +65,6 @@ if __name__ == '__main__' :
 
     process_all_wordgroup(all_groups, wordlist, targetpath)
 
+    with open('./success.txt', 'w') as f :
+        print('success', file=f)
     print('success')

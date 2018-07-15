@@ -1,7 +1,7 @@
-from process.get_color_tone import *
 '''
 Get color tone from image--see description in process/get_color_tone
 '''
+from process.get_color_tone import *
 
 if __name__ == '__main__' :
     # Here defines the command-line options for the program

@@ -18,9 +18,9 @@ python3 get_color_tone.py John
 
 Here are some example usage snapshots:
 
-<img src="text-to-color-tone-ex1.png" width="400"/> <img src="text-to-color-tone-ex2.png" width="400"/>
+<img src="screenshots/text-to-color-tone-ex1.png" width="400"/> <img src="screenshots/text-to-color-tone-ex2.png" width="400"/>
 
-<img src="text-to-color-tone-ex3.png" width="400"/> <img src="text-to-color-tone-ex4.png" width="400"/>
+<img src="screenshots/text-to-color-tone-ex3.png" width="400"/> <img src="screenshots/text-to-color-tone-ex4.png" width="400"/>
 
 Most of the app logic is in downloader/ and process/.
 
@@ -39,10 +39,10 @@ Most word group color tones contain a large portion of white color, followed by 
 
 Another problem might be that nltk.corpus.wordnet treats word differently than we generally do. Without context, it considers the word run and walk both a noun and a verb. Downtown and home are considered noun, adjective, and adverb.
 
-<img src="noun-color-tone.png" width="400"/> <img src="verb-color-tone.png" width="400"/>
+<img src="screenshots/noun-color-tone.png" width="400"/> <img src="screenshots/verb-color-tone.png" width="400"/>
 
-<img src="first-con-sound-CH-color-tone.png" width="400"/> <img src="first-vowel-sound-ER-color-tone.png" width="400"/>
+<img src="screenshots/first-con-sound-CH-color-tone.png" width="400"/> <img src="screenshots/first-vowel-sound-ER-color-tone.png" width="400"/>
 
-<img src="starts-with-b-color-tone.png" width="400"/> <img src="starts-with-x-color-tone.png" width="400"/>
+<img src="screenshots/starts-with-b-color-tone.png" width="400"/> <img src="screenshots/starts-with-x-color-tone.png" width="400"/>
 
 Python Library Dependencies: scikit, matplotlib, opencv(cv2), requests, nltk

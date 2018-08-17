@@ -1,11 +1,11 @@
-This is a python app that displays the color tone of a text. The process of transforming text to color works as follows:
+This is a python app that displays the color tone of a text by searching for online images and looking at its pixels. The process works as follows:
 
-1. Use Google search API to search images using the text as the query.
-2. Obtain from the search thumbnails (currently 6 by default) of the text.
-3. Use KNN (K nearest neighbors) algorithm on the thumnails to get colors (5 by default) that best represent the pixel concatenation.
-4. Display the colors (called collectively as color tone) using matplotlib.
+1. Use Google search API to search images using the query.
+2. Obtain thumbnails of the query from the search.
+3. Use KNN (K nearest neighbors) algorithm on the pixels of the thumnails to get colors that best represent the images.
+4. Display the colors, called collectively as the color tone of the image, using matplotlib python library.
 
-You can call it through bash:
+You can call the app through bash:
 
 ```bash
 python3 get_color_tone.py Groot
@@ -22,7 +22,7 @@ Here are some example usage snapshots:
 
 Most of the app logic is in downloader/ and process/.
 
-Note that you will need your own google API key to be able to run the app. The app by default tries to read it from google-api-key.txt -- If you want to try this on your own machine, make you you get a Google Custom Search API key.
+Note that you will need your own google API key to be able to run the app. The app tries to read it from google-api-key.txt -- If you want to try this on your own machine, make you you get a Google Custom Search API key.
 
 After finishing the first part, we decided to find the color tone of each word category in dictionary.
 
